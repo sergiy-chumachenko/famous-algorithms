@@ -1,5 +1,6 @@
 import logging
 import random
+import time
 
 logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s]:[%(levelname)s]:[MESSAGE] %(message)s')
 
@@ -21,6 +22,18 @@ def selection_sort(array):
 
 
 if __name__ == "__main__":
-    lst = [random.randint(0, 100) for num in range(20)]
-    print(lst)
-    print(selection_sort(array=lst))
+
+    """
+    Selection Sort Algorithm (2000 size array) - execution time: 0.09047635200000001 seconds.
+    Selection Sort Algorithm (20000 size array) - execution time: 9.488463571 seconds.
+    Selection Sort Algorithm (100000 size array) - execution time: 240.28286130799998 seconds."""
+
+    lst = [random.randint(0, 500) for num in range(100000)]
+    size = len(lst)
+    arr = lst[:]
+    start = time.process_time()
+    selection_sort(array=lst)
+    stop = time.process_time()
+    logging.info(
+        "Selection Sort Algorithm (%s size array) - execution time: %s seconds.", size, stop - start
+    )
