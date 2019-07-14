@@ -27,11 +27,21 @@ def maximum(array, elem):
         return maximum(array=array[1:], elem=elem)
 
 
+def maximum2(array):
+    if len(array) == 2:
+        return array[0] if array[0] > array[1] else array[1]
+    else:
+        smax = maximum2(array[1:])
+    return array[0] if array[0] > smax else smax
+
+
 if __name__ == "__main__":
     lst = [random.randint(0, 500) for i in range(950)]
     result = summarize(array=lst)
     count_result = count(array=lst)
     maximum_result = maximum(array=lst, elem=lst[0])
+    maximum2_result = maximum2(array=lst)
     logging.info("Sum Recursion Algorithm Result --> %s", result)
     logging.info("Count Recursion Algorithm Result --> %s", count_result)
     logging.info("Max Recursion Algorithm Result --> %s", maximum_result)
+    logging.info("Max Ver.2 Recursion Algorithm Result --> %s", maximum2_result)
